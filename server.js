@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const userModel = require('./models/user');
 
 // CONFIGURATION
 require('dotenv').config();
@@ -13,8 +14,18 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 
 // ROUTES
+app.get("/", async (req, res) => {
+    res.redirect('login');
+});
 
-app.get("/", (req, res) => res.send("Hello World"));
+
+app.get('/login', (req, res) => res.render('login'));
+
+app.post('/login', (req, res) => {
+    
+
+})
+
 
 app.listen(PORT, () => {
     console.log("successfully hosted at http:/localhost:" + PORT);
